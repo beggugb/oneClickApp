@@ -1,8 +1,4 @@
 import { userService } from '../services';
-import { alertActions } from './'
-import {createNotification} from 'react-redux-notify';
-import { pendingTask, begin, end } from 'react-redux-spinner';
-
 export const usuActions = {
     usuData,
 
@@ -43,34 +39,32 @@ export function modalViews(state){
 
 
 function usuData(page,numPages){
-    return dispatch => {  
-    dispatch(inicial());              
+    return dispatch => {                
         userService.getData(page,numPages)
         .then((response)=>{                              
           dispatch(ususData(response.usuarios));
       })
-        .catch((err)=>{ dispatch(createNotification(alertActions.error(err)));})
+        .catch((err)=>{ 
+            
+        })
     };
 }
 
 export function ususData(response){
     return{        
         type: 'USU_DATA',
-        response: response,
-        [ pendingTask ]: end                 
+        response: response
     }
 }
 
 export function inicial(){
     return{        
-        type: 'INICIO',
-        [ pendingTask ]: begin                 
+        type: 'INICIO'
     }
 }
 
 export function final(){
     return{        
-        type: 'FINAL',
-        [ pendingTask ]: end                 
+        type: 'FINAL'
     }
 }

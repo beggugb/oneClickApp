@@ -36,7 +36,7 @@ import {
 
 function FormCliente ({ item, handleSubmit, handleChange, handleChanges, handleChan }) {     
 return(
-    <div className="formcli">
+  <div className="herramientas"> 
         <h6>Formulario de Registro</h6>
         <Form onSubmit={ handleSubmit}>
                     <Row>
@@ -70,7 +70,7 @@ return(
                
                     <Row>
                     <Col className="pr-md-1" md="6">
-                      <label>DescripciÃn³</label>
+                      <label>Descripciï¿½nï¿½</label>
                       <Input
                           type="text"
                           name="direccion"

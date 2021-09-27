@@ -1,6 +1,4 @@
 import { combineReducers } from "redux";
-import notifyReducer from "react-redux-notify";
-import { pendingTasksReducer } from "react-redux-spinner";
 import { users } from "./users.reducers";
 import { usus } from "./usus.reducers";
 import { clientes } from "./clientes.reducers";
@@ -24,9 +22,7 @@ const rootReducer = combineReducers({
   horario,
   contrato,
   plan,
-  notas,
-  notifications: notifyReducer,
-  pendingTasks: pendingTasksReducer,
+  notas
 });
 
 export default rootReducer;

@@ -1,7 +1,4 @@
 import { crudService } from "../services";
-import { alertActions } from "./";
-import { createNotification } from "react-redux-notify";
-import { pendingTask, begin, end } from "react-redux-spinner";
 export const crudActions = {
   getData,
   getLista,
@@ -46,7 +43,7 @@ function consultas(xredux, payload, page, num, categoriaId, estado, nombre) {
         dispatch(Datas(xredux, response.result));        
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+        
       });
   };
 }
@@ -62,7 +59,7 @@ function getBuscar(xredux, payload, page, num, parametro) {
         dispatch(Datas(xredux, response.result));
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+        
       });
   };
 }
@@ -79,27 +76,25 @@ function getData(xredux, payload, page, num, prop, orden) {
 
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));       
+         
         
       });
   };
 }
 
 function aprobar(xredux, payload, dato) {
-  return (dispatch) => {
-    dispatch(inicial());
+  return (dispatch) => {    
     crudService
       .create(payload, dato)
       .then((response) => {
         if (response.result) {
           dispatch(Datas(xredux, response.result.clientes));
         }
-        dispatch(createNotification(alertActions.success(response.message)));
-        dispatch(final());
+       
       })
 
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -121,7 +116,7 @@ function getLista(xredux, payload, dato) {
         dispatch(Datas(xredux, response.result));
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+       
       });
   };
 }
@@ -166,7 +161,7 @@ function getItem(xredux, payload, id) {
         dispatch(Item('PAQUETE_ITEM', response.cliente.Paquete));             
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -212,10 +207,10 @@ function registrar(xredux, payload, dato) {
     crudService
       .registrar(payload, dato)
       .then((response) => {        
-        dispatch(createNotification(alertActions.success("email enviado")));        
+       
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+        
       });
   };
 }
@@ -226,10 +221,10 @@ function register(xredux, payload, dato) {
       .create(payload, dato)
       .then((response) => {                
         dispatch(Registered(xredux, response.result));                      
-        dispatch(createNotification(alertActions.success(response.message)));        
+            
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+
       });
   };
 }
@@ -241,11 +236,11 @@ function update(xredux, payload, dato) {
       .then((response) => {        
         console.log(response)
         dispatch(Registered(xredux, response.result));
-        dispatch(createNotification(alertActions.success(response.message)));       
+        
         
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -260,18 +255,15 @@ export function Registered(redu, response) {
 
 /*|===================================ALL==========================================|*/
 function upload(xredux, payload, data, datoId) {
-  return (dispatch) => {
-    dispatch(inicial());
+  return (dispatch) => {    
     crudService
       .upload(payload, data, datoId)
       .then((response) => {
         dispatch(Up(xredux, response.result));
-        dispatch(
-          createNotification(alertActions.success("dato actualizado !!"))
-        );
+       
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -279,59 +271,50 @@ function upload(xredux, payload, data, datoId) {
 export function Up(redu, response) {
   return {
     type: redu,
-    response: response,
-    [pendingTask]: end,
+    response: response
+   
   };
 }
 
 /*|===================================ALL==========================================|*/
 function uploads(xredux, payload, data, datoId) {
-  return (dispatch) => {
-    dispatch(inicial());
+  return (dispatch) => {    
     crudService
       .uploads(payload, data, datoId)
       .then((response) => {
         dispatch(Up(xredux, response.result));
-        dispatch(
-          createNotification(alertActions.success("dato actualizado !!"))
-        );
+       
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+        
       });
   };
 }
 
 function banner(xredux, payload, data, datoId) {
-  return (dispatch) => {
-    dispatch(inicial());
+  return (dispatch) => {    
     crudService
       .banner(payload, data, datoId)
       .then((response) => {
         dispatch(Up(xredux, response.result));
-        dispatch(
-          createNotification(alertActions.success("dato actualizado !!"))
-        );
+      
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+        
       });
   };
 }
 
 function slider(xredux, payload, data, datoId,slider) {
-  return (dispatch) => {
-    dispatch(inicial());
+  return (dispatch) => {    
     crudService
       .slider(payload, data, datoId,slider)
       .then((response) => {
         dispatch(Up(xredux, response.result));
-        dispatch(
-          createNotification(alertActions.success("dato actualizado !!"))
-        );
+        
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -358,7 +341,7 @@ function getItemView(xredux, payload, id, state) {
         }
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+      
       });
   };
 }
@@ -425,7 +408,7 @@ function search(xredux, payload, dato) {
         dispatch(Datas(xredux, response.result));        
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+       
       });
   };
 }
@@ -449,20 +432,6 @@ export function iReg(redu, state, item) {
 
 /*|==================================END_DALL======================================|*/
 
-export function inicial() {
-  return {
-    type: "INICIO",
-    [pendingTask]: begin,
-  };
-}
-
-export function final() {
-  return {
-    type: "FINAL",
-    [pendingTask]: end,
-  };
-}
-
 
 /*|===================================ALL==========================================|*/
 function registers(xredux, payload, dato) {
@@ -471,11 +440,11 @@ function registers(xredux, payload, dato) {
       .create(payload, dato)
       .then((response) => {
         dispatch(Registereds(xredux, response.result));        
-        dispatch(createNotification(alertActions.success(response.message)));
+    
         
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+       
       });
   };
 }
@@ -486,10 +455,10 @@ function updates(xredux, payload, dato) {
       .update(payload, dato)
       .then((response) => {
         dispatch(Registereds(xredux, response.result));
-        dispatch(createNotification(alertActions.success(response.message)));
+     
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+       
       });
   };
 }
@@ -508,10 +477,10 @@ function _delete(xredux, payload, dato) {
       .delete(payload, dato)
       .then((response) => {
         dispatch(Registereds(xredux, response.result));
-        dispatch(createNotification(alertActions.success(response.message)));
+     
       })
       .catch((err) => {        
-        dispatch(createNotification(alertActions.error(err.original.detail)));
+      
       });
   };
 }
@@ -537,7 +506,7 @@ function vusername(xredux, dato) {
           dispatch(vUsername(xredux, response.result));                
         })
         .catch((err) => {        
-          dispatch(createNotification(alertActions.error(err.original.detail)));
+       
         });
     };        
   };
@@ -558,7 +527,7 @@ function venlace(xredux, dato) {
         dispatch(vEnlace(xredux, response.result));                
       })
       .catch((err) => {        
-        dispatch(createNotification(alertActions.error(err.original.detail)));
+      
       });
   };        
 };
@@ -578,7 +547,7 @@ function getNota(xredux, payload, dato) {
         dispatch(vNota(xredux, response.result));                
       })
       .catch((err) => {        
-        dispatch(createNotification(alertActions.error(err.original.detail)));
+      
       });
   };        
 };
@@ -598,7 +567,7 @@ function pagar(xredux, payload, dato) {
         dispatch(vPlan(xredux, response.result));               
       })
       .catch((err) => {        
-        dispatch(createNotification(alertActions.error(err.original.detail)));
+       
       });
   };        
 };
@@ -644,7 +613,7 @@ function getHorarios(xredux, sucursalId, tipo,state) {
           dispatch(HorarioData(xredux, response.result, state));          
       })
       .catch((err) => {
-        dispatch(createNotification(alertActions.error(err)));
+       
       });
   };
 }

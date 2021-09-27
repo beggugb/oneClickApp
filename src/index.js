@@ -6,14 +6,10 @@ import { Provider } from "react-redux";
 import { store, history } from "./helpers";
 
 import "./assets/css/black-dashboard-react.css";
-import "./assets/css/core/main.css";
-import "./assets/css/daygrid/main.css";
-import "./assets/css/timegrid/main.css";
 
 import AdminLayout from "./layouts/Admin/Admin.jsx";
 import PostLayout from "./layouts/Post/Post.jsx";
 import Error from "./layouts/Error.jsx";
-import "../node_modules/react-redux-notify/dist/ReactReduxNotify.css";
 
 ReactDOM.render(
   <Provider store={store}>

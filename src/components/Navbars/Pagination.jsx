@@ -49,7 +49,7 @@ function Pagination({
     <Nav className="navbar navbar-expand bnavbar">
       <li className="nav-link">
         <Button
-          className="nav-link btn-link aa"
+          className="btn-linki"
           onClick={() => makeHttpRequestWithPage(1, pagina,'nombres','ASC')}
         >
           <FontAwesomeIcon icon={faAngleDoubleLeft} />
@@ -58,7 +58,7 @@ function Pagination({
 
       <li className="nav-link">
         <Button
-          className="nav-link btn-link aa"
+          className="btn-linki"
           onClick={() =>
             makeHttpRequestWithPage(current === 1 ? 1 : current - 1, pagina,'nombres','ASC')
           }
@@ -70,7 +70,7 @@ function Pagination({
 
       <li className="nav-link">
         <Button
-          className="nav-link btn-link aa"
+          className="btn-linki"
           onClick={() =>
             makeHttpRequestWithPage(
               current === paginas ? current : current + 1,
@@ -83,7 +83,7 @@ function Pagination({
       </li>
       <li className="nav-link">
         <Button
-          className="nav-link btn-link aa"
+          className="btn-linki"
           onClick={() => makeHttpRequestWithPage(paginas, pagina,'nombres','ASC')}
 
         >

@@ -1,11 +1,13 @@
 import React from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck,faTimes} from "@fortawesome/free-solid-svg-icons";
 
 import ReactToPrint from "react-to-print";
 import { apiErp } from "../../../helpers";
 import Moment from "react-moment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Table, Row, Card, Col, Button, CardBody, CardFooter } from "reactstrap";
+import { faEye, faHeart } from "@fortawesome/free-solid-svg-icons";
+
 
 function ComponentToPrint ({ item, usuario, citem, pdata }) {     
     const fechaHoy = new Date();    
@@ -43,9 +45,19 @@ function ComponentToPrint ({ item, usuario, citem, pdata }) {
                       />                      
                     </a>                    
                   </div>
-                  <div className="card-description text-white">                    
+                  <div className="card-description text-white text-center">                    
                     {item.nombres}
                   </div>
+                  <Row>
+                      <Col className="pr-md-1 icons" md="4">                                                
+                        <FontAwesomeIcon icon={faHeart} />
+                        {item.likes}
+                      </Col>
+                      <Col className="px-md-1 icons" md="8">                                                                      
+                        <FontAwesomeIcon icon={faEye} />
+                        {item.views}
+                      </Col>                      
+                    </Row>
                 </CardBody>
                 <CardFooter>
                 <Row>
@@ -171,6 +183,8 @@ function ComponentToPrint ({ item, usuario, citem, pdata }) {
                           {citem.total}
                       </Col>                      
                     </Row>
+
+                    
                                 
 
 

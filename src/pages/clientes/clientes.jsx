@@ -92,7 +92,8 @@ class clientes extends React.Component {
     const { citem } = this.props.contrato;    
     const { pdata } = this.props.plan;          
     return (
-      <div className="content">
+      <div className="content">     
+      <div className="main-contenido">   
         
         <Modal isOpen={modalView} toggle={this.toggleModalView}>
           <Button className="btn-view btn-danger"  onClick={() => this.toggleModalView()} >
@@ -138,6 +139,7 @@ class clientes extends React.Component {
         </Row>
         <Row>
         <Col>
+        <div className="navegador" >
         <Pagination
                 current={pagina}
                 paginas={paginas}
@@ -146,8 +148,10 @@ class clientes extends React.Component {
                 pagina={12}
                 makeHttpRequestWithPage={this.makeHttpRequestWithPage}
               />
-        </Col>        
+        </div>
+        </Col>                
         </Row>  
+      </div>
       </div>
     )
   }  

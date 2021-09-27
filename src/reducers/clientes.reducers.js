@@ -32,6 +32,8 @@ const initialState = {
     longitude: -17.877973,
     latitude: -63.173716,
     video:'',
+    likes:0,
+    views:0,
     Categorium: {
       id: 0,
       nombre: "",
