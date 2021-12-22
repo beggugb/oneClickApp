@@ -150,7 +150,7 @@ return(
                     </Row>
 
                     <Row>
-                      <Col className="pr-md-1" md="4">
+                      <Col className="pr-md-1" md="3">
                        <FormGroup>
                        <label>Web</label>
                           <Input
@@ -163,7 +163,7 @@ return(
                         />                           
                        </FormGroup>                        
                       </Col>
-                      <Col className="px-md-1" md="4">
+                      <Col className="px-md-1" md="3">
                       <FormGroup>
                           <label>Facebook</label>
                           <Input
@@ -176,7 +176,7 @@ return(
                           />
                         </FormGroup>
                       </Col>
-                      <Col className="px-md-1" md="4">
+                      <Col className="px-md-1" md="3">
                       <FormGroup>
                           <label>Instagram</label>
                           <Input
@@ -188,13 +188,26 @@ return(
                           onChange={handleChanges("instagram")}                          
                           />
                         </FormGroup>
+                      </Col> 
+                      <Col className="px-md-1" md="3">
+                      <FormGroup>
+                          <label>TikTok</label>
+                          <Input
+                          type="text"
+                          name="tiktok"
+                          id="tiktok"
+                          placeholder="tiktok"
+                          value={item.tiktok}
+                          onChange={handleChanges("tiktok")}                          
+                          />
+                        </FormGroup>
                       </Col>                                          
                     </Row>                  
 
                     <Row>
                       <Col md="12">
                         <FormGroup>
-                          <label>Direcció</label>
+                          <label>Dirección</label>
                           <Input
                           type="textarea"
                           name="descripcion"
@@ -207,6 +220,23 @@ return(
                         </FormGroup>
                       </Col>
                     </Row>
+                    <Row>
+                      <Col md="12">
+                        <FormGroup>
+                          <label>Tags</label>
+                          <Input
+                          type="textarea"
+                          name="tags"
+                          id="tags"
+                          placeholder="tags"
+                          value={item.tags}
+                          onChange={handleChanges("tags")}
+                          style={{ height: "40px" }}
+                        />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+
                     <Row>
                       <Col className="pr-md-1" md="4">
                         <FormGroup>

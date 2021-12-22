@@ -34,6 +34,10 @@ const initialState = {
     video:'',
     likes:0,
     views:0,
+    tiktok:'',
+    facebook:'',
+    instagram:'',
+    tags:'',
     Categorium: {
       id: 0,
       nombre: "",
