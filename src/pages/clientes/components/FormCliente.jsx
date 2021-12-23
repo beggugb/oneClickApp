@@ -70,7 +70,7 @@ return(
                
                     <Row>
                     <Col className="pr-md-1" md="6">
-                      <label>Descripci�n�</label>
+                      <label>Descripción</label>
                       <Input
                           type="text"
                           name="direccion"
@@ -215,13 +215,28 @@ return(
                           placeholder="descripcion"
                           value={item.descripcion}
                           onChange={handleChanges("descripcion")}
-                          style={{ height: "70px" }}
+                          style={{ height: "35px" }}
                         />
                         </FormGroup>
                       </Col>
                     </Row>
                     <Row>
                       <Col md="12">
+                        <FormGroup>
+                          <label>Enlace documento</label>
+                          <Input
+                          type="text"
+                          name="slider1"
+                          id="slider1"
+                          placeholder="slider1"
+                          value={item.slider1}
+                          onChange={handleChanges("slider1")}                          
+                        />
+                        </FormGroup>
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col md="6">
                         <FormGroup>
                           <label>Tags</label>
                           <Input
@@ -231,6 +246,20 @@ return(
                           placeholder="tags"
                           value={item.tags}
                           onChange={handleChanges("tags")}
+                          style={{ height: "40px" }}
+                        />
+                        </FormGroup>
+                      </Col>
+                      <Col md="6">
+                        <FormGroup>
+                          <label>Text</label>
+                          <Input
+                          type="textarea"
+                          name="banner"
+                          id="banner"
+                          placeholder="banner"
+                          value={item.banner}
+                          onChange={handleChanges("banner")}
                           style={{ height: "40px" }}
                         />
                         </FormGroup>

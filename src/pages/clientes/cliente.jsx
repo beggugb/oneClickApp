@@ -12,6 +12,7 @@ import Publicidad from '../publicidad/publicidad'
 import Horarios from '../horarios/horarios'
 import Seguridad from './components/Seguridad'
 
+
 import classnames from 'classnames';
 
 class cliente extends React.Component {
@@ -179,6 +180,7 @@ class cliente extends React.Component {
             Seguridad
           </NavLink>
         </NavItem>
+     
        
       </Nav>
       <TabContent activeTab={activeTab} className="tabled">
@@ -219,6 +221,7 @@ class cliente extends React.Component {
             igual = {igual}
           />
         </TabPane>
+     
       </TabContent>
         </div>
       </div>

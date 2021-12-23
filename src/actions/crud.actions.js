@@ -14,6 +14,7 @@ export const crudActions = {
   banner,
   slider,
   uploads,
+  uploadd,
   getItemView,
   getItemViews,
   search,
@@ -281,6 +282,20 @@ function uploads(xredux, payload, data, datoId) {
   return (dispatch) => {    
     crudService
       .uploads(payload, data, datoId)
+      .then((response) => {
+        dispatch(Up(xredux, response.result));
+       
+      })
+      .catch((err) => {
+        
+      });
+  };
+}
+
+function uploadd(xredux, payload, data, datoId) {
+  return (dispatch) => {    
+    crudService
+      .uploadd(payload, data, datoId)
       .then((response) => {
         dispatch(Up(xredux, response.result));
        

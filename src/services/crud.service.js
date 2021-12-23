@@ -9,6 +9,7 @@ export const crudService = {
   update,
   upload,
   uploads,
+  uploadd,
   banner,
   slider,
   search,
@@ -205,6 +206,19 @@ function uploads(payload, dato, datoId) {
     requestOptions
   ).then(handleResponse);
 }
+
+function uploadd(payload, dato, datoId) {
+  const requestOptions = {
+    method: "PUT",
+    headers: { ...authHeader() },
+    body: dato,
+  };
+  return fetch(
+    `${apiErp}/${payload}/uploadd/item/${datoId}`,
+    requestOptions
+  ).then(handleResponse);
+}
+
 
 
 
