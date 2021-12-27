@@ -1,10 +1,10 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faEdit,faFilePdf,faCheck,faTimes, faDollarSign } from "@fortawesome/free-solid-svg-icons";
+import {faEdit,faFilePdf,faCheck,faTimes, faDollarSign, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { Table,Button,ButtonGroup } from "reactstrap";
 
-function TablaClientes ({data, toggleView, toggleViewf, handleAprobar, handleOrden }) {     
+function TablaClientes ({data, toggleView, toggleViewf, handleAprobar, handleOrden, borrar }) {     
 return(
   <div className="table-single">             
   <Table className="table-simple">
@@ -54,6 +54,11 @@ return(
                            className="btn-danger btn-sm"
                            onClick={() => toggleViewf(item.id)}>
                            <FontAwesomeIcon icon={faFilePdf} />
+                         </Button> 
+                         <Button
+                           className="btn-danger btn-sm"
+                           onClick={() => borrar(item.id)}>
+                           <FontAwesomeIcon icon={faTrash} />
                          </Button>                                                   
                    </ButtonGroup>
                  </td>

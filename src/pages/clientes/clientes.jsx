@@ -64,6 +64,10 @@ class clientes extends React.Component {
     this.props.aprobar("CLIENTE_DATA", "contratos", dato);
   };
 
+  borrar = (item) => {    
+    this.props.delete("CLIENTE_DATA", "clientes", item);
+  };
+
   handleSearch = (prop) => (value) => {
     let item = this.state.item;
     item[prop] = value.target.value;
@@ -133,7 +137,8 @@ class clientes extends React.Component {
             data = {data}            
             toggleView ={ this.toggleView}
             toggleViewf ={ this.toggleViewf}
-            handleAprobar={ this.handleAprobar}            
+            handleAprobar={ this.handleAprobar}    
+            borrar={this.borrar}        
           />
           </Col>
         </Row>

@@ -1,4 +1,5 @@
 import { crudService } from "../services";
+import {toastr} from 'react-redux-toastr'
 export const crudActions = {
   getData,
   getLista,
@@ -498,7 +499,8 @@ function _delete(xredux, payload, dato) {
     crudService
       .delete(payload, dato)
       .then((response) => {
-        dispatch(Registereds(xredux, response.result));
+        /*dispatch(Registereds(xredux, response.result));*/
+        dispatch(Datas(xredux, response.result)); 
      
       })
       .catch((err) => {        
