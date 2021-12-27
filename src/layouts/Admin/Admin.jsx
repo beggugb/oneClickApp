@@ -19,7 +19,8 @@ import Paquetes from "../../pages/paquetes/paquetes.jsx";
 import Categorias from "../../pages/categorias/categorias.jsx";
 import Perfil from "../../pages/perfil/perfil.jsx"
 import Nota from "../../pages/nota/nota.jsx"
-
+import Reclutamientos from "../../pages/reclutamiento/reclutamientos.jsx";
+import Reclutamiento from "../../pages/reclutamiento/reclutamiento.jsx";
 import logo from "../../assets/img/logo.png";
 
 function Admin (){
@@ -59,6 +60,8 @@ function Admin (){
       return Datos;      
     case "Perfil":
       return Perfil;  
+    case "Reclutamientos":
+        return Reclutamientos;   
     default:
       return null;
     }
@@ -162,6 +165,7 @@ function Admin (){
           {getRoutes(itemr)}          
           <Route path="/admin/dashboard" component={Dashboard} />
               <Route path="/admin/cliente/:clienteId" component={Cliente} />
+              <Route path="/admin/reclutamiento/:reclutamientoId" component={Reclutamiento} />
               <Route path="/admin/paquetes" component={Paquetes} />
               <Route path="/admin/categorias" component={Categorias} />
               <Route path="/admin/nota/:clienteId" component={Nota} />

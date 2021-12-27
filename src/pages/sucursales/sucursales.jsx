@@ -177,7 +177,7 @@ class sucursales extends React.Component {
             </Row>  
           
           <Row>
-            <Col md="3">
+            <Col md="2">
                 <FormGroup>
                   <label>Teléfono</label>
                   <Input
@@ -187,6 +187,19 @@ class sucursales extends React.Component {
                     placeholder="telefono"
                     value={item.telefono}
                     onChange={this.handleChanges("telefono")}                            
+                  />
+                </FormGroup>
+            </Col>
+            <Col md="2">
+                <FormGroup>
+                  <label>Celular</label>
+                  <Input
+                    id="celular"
+                    type="text"
+                    name="celular"                    
+                    placeholder="celular"
+                    value={item.celular}
+                    onChange={this.handleChanges("celular")}                            
                   />
                 </FormGroup>
             </Col>
@@ -219,7 +232,7 @@ class sucursales extends React.Component {
                 </FormGroup>
             </Col>
 
-        <Col md="3">
+        <Col md="2">
         <Button
            className="btn-sm btn-success mt-4"
            type="submit"
@@ -241,13 +254,14 @@ class sucursales extends React.Component {
                   <th className="text-center" width="5%">
                     #
                   </th>
-                  <th width="16%">Nombre</th>
-                  <th width="20%">Dirección</th>
-                  <th width="7%">Teléfono</th>                  
+                  <th width="20%">Nombre</th>
+                  <th width="15%">Dirección</th>
+                  <th width="10%">Celular</th>                  
+                  <th width="10%">Teléfono</th>
                   <th width="10%" >Longitud</th>
                   <th width="10%">Latitud</th>
                   <th width="15%">Tipo</th>                  
-                  <th colSpan="2" width="15%">Icono</th>                  
+                  <th width="10%">Icono</th>                  
                 </tr>              
                            
           </thead>
@@ -259,6 +273,7 @@ class sucursales extends React.Component {
                       <td className="text-center">{item.id}</td>
                       <td className="largo">{item.nombre}</td>
                       <td>{item.direccion}</td>
+                      <td>{item.celular}</td>                      
                       <td>{item.telefono}</td>                      
                       <td>{item.longitude}</td>
                       <td>{item.latitude}</td>

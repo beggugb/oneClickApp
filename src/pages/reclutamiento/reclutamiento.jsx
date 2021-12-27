@@ -5,16 +5,13 @@ import { crudActions } from "../../actions";
 
 import { TabContent, TabPane, Nav, NavItem, NavLink } from "reactstrap";
 import { Link } from "react-router-dom";
-import FormCliente from './components/FormCliente'
-import Imagenes from './components/Imagenes'
-import Sucursales from '../sucursales/sucursales'
-import Publicidad from '../publicidad/publicidad'
-import Horarios from '../horarios/horarios'
+import FormReclutamiento from './components/FormReclutamiento'
+
 
 
 import classnames from 'classnames';
 
-class cliente extends React.Component {
+class reclutamiento extends React.Component {
   constructor(props) {
   super(props);
     this.state = {
@@ -31,10 +28,10 @@ class cliente extends React.Component {
         const {
           match: { params },
         } = this.props;
-        if (params.clienteId > 0) {
-          this.props.getItem("CLIENTE_ITEM", "clientes", params.clienteId);
+        if (params.reclutamientoId > 0) {
+          this.props.getItem("FAVORITO_ITEM", "favoritos", params.reclutamientoId);
           this.setState({
-            clienteId: params.clienteId,
+            reclutamientoId: params.reclutamientoId,
             file: "",
             imagePreviewUrl: "",
           })
@@ -46,20 +43,18 @@ class cliente extends React.Component {
         if(activeTab !== tab) {
           this.setState({
             activeTab : tab
-          },this.props.getItem("CLIENTE_ITEM", "clientes", clienteId)
+          },this.props.getItem("FAVORITO_ITEM", "clientes", clienteId)
           )
         }
     
     }
     handleSubmit(event) {
       event.preventDefault();       
-          let dato = this.props.clientes.item;
-          dato.paqueteId = this.props.paquetes.item.id;
-          dato.categoriaId = this.props.categorias.item.id;  
+          let dato = this.props.favoritos.item;          
           if (dato.id) { 	    
-            this.props.update("CLIENTE_REGISTO", "clientes", dato);
+            this.props.update("FAVORITO_REGISTO", "favoritos", dato);
           } else {
-            this.props.register("CLIENTE_REGISTO", "clientes", dato);
+            this.props.register("FAVORITO_REGISTO", "favoritos", dato);
           }
        
        
@@ -67,22 +62,22 @@ class cliente extends React.Component {
   
     handleChange = (prop) => (event) => {
       if (event) {
-        this.props.change("CLIENTE_CHANGE", prop, event.value);
+        this.props.change("FAVORITO_CHANGE", prop, event.value);
       } else {
-        this.props.change("CLIENTE_CHANGE", prop, "");
+        this.props.change("FAVORITO_CHANGE", prop, "");
       }
     };
   
     handleChanges = (prop) => (event) => {
       if (event) {
-        this.props.change("CLIENTE_CHANGE", prop, event.target.value);
+        this.props.change("FAVORITO_CHANGE", prop, event.target.value);
       } else {
-        this.props.change("CLIENTE_CHANGE", prop, "");
+        this.props.change("FAVORITO_CHANGE", prop, "");
       }
     };
   
     handleChan = (prop) => (event) => {
-      this.props.change("CLIENTE_CHANGE", prop, event);
+      this.props.change("FAVORITO_CHANGE", prop, event);
     };
 
     handlec = (prop) => (event) => {
@@ -92,7 +87,7 @@ class cliente extends React.Component {
     };
 
     handleDelete = () => {      
-      this.props.change("CLIENTE_CHANGE", "password", "");      
+      this.props.change("FAVORITO_CHANGE", "password", "");      
       this.setState({
         validate: false
       })
@@ -110,13 +105,13 @@ class cliente extends React.Component {
   };
 
    componentWillUnmount() {
-    this.props.reset("CLIENTE_RESE");
+    this.props.reset("FAVORITO_RESE");
   }
 
      
   render() {       
-    const { activeTab, clienteId, password2, validate, igual } = this.state       
-    const { item } = this.props.clientes
+    const { activeTab, reclutamientoId } = this.state       
+    const { item } = this.props.favoritos
     return (
         <div className="content">
         <div className="main-contenido">        
@@ -124,8 +119,8 @@ class cliente extends React.Component {
         <NavItem>
           <NavLink
             className={classnames({ active: activeTab === '1' })}       >
-            <Link to={`/admin/clientes`}>
-            Lista de Clientes
+            <Link to={`/admin/reclutamientos`}>
+            Lista de Postulaciones
             </Link>
           </NavLink>
         </NavItem>
@@ -136,42 +131,7 @@ class cliente extends React.Component {
           >
             Datos Generales
           </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '3' })}
-            onClick={() => { clienteId === 0 ?this.toggle('2') :this.toggle('3'); }}
-          >
-            Imagenes            
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '4' })}
-            onClick={() => { clienteId === 0 ?this.toggle('2') :this.toggle('4'); }}
-          >
-            Sucursales
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '5' })}
-            onClick={() => { clienteId === 0 ?this.toggle('2') :this.toggle('5'); }}
-          >
-            Publicidad
-          </NavLink>
-        </NavItem>
-
-        <NavItem>
-          <NavLink
-            className={classnames({ active: activeTab === '6' })}
-            onClick={() => { clienteId === 0 ?this.toggle('2') :this.toggle('6'); }}
-          >
-            Horarios
-          </NavLink>
-        </NavItem>
-
-  
+        </NavItem>  
        
       </Nav>
       <TabContent activeTab={activeTab} className="tabled">
@@ -179,7 +139,7 @@ class cliente extends React.Component {
                   
         </TabPane>
         <TabPane tabId="2">          
-          <FormCliente
+          <FormReclutamiento
             item = { item }
             handleSubmit = { this.handleSubmit }            
             handleChange = { this.handleChange }
@@ -187,18 +147,7 @@ class cliente extends React.Component {
             handleChan = { this.handleChan }
           />
         </TabPane>
-        <TabPane tabId="3">
-          <Imagenes />
-        </TabPane>
-        <TabPane tabId="4">
-          <Sucursales/>
-        </TabPane>
-        <TabPane tabId="5">
-          <Publicidad/>
-        </TabPane>
-        <TabPane tabId="6">
-          <Horarios/>
-        </TabPane>
+       
      
      
       </TabContent>
@@ -220,9 +169,8 @@ class cliente extends React.Component {
 
 const mapStateToProps = (state) => ({
   clientes: state.clientes,
-  paquetes: state.paquetes,
-  categorias: state.categorias,
+  favoritos: state.favoritos,  
   users: state.users
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(cliente);
+export default connect(mapStateToProps, mapDispatchToProps)(reclutamiento);

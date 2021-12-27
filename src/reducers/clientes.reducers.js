@@ -1,5 +1,6 @@
 const initialState = {
   data: [],
+  items:[],
   pagina: 0,
   paginas: 0,
   total: 0,
@@ -12,8 +13,8 @@ const initialState = {
     web: "",
     filename: "default.jpg",
     descripcion: "",
-    registrado: false,
-    habilitado: false,
+    registrado: true,
+    habilitado: true,
     hinicio: "00:00:00",
     hfin: "00:00:00",
     hestado: false,
@@ -22,7 +23,7 @@ const initialState = {
     snum: 0,
     username: "",
     password: "",
-    estado: false,
+    estado: true,
     rolId: 1,
     categoriaId: 1,
     paqueteId: 1,
@@ -50,6 +51,11 @@ const initialState = {
 
 export function clientes(state = initialState, action) {
   switch (action.type) {
+    case "CLIENTE_LISTA":
+      return {
+        ...state,
+        items: action.response,
+      };
     case "CLIENTE_DATA":
       return {
         ...state,

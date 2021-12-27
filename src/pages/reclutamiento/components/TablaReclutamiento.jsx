@@ -11,11 +11,10 @@ return(
   <thead>
         <tr>  
           <th className="text-center" width="5%">#</th>
-             <th width="30%">Nombres</th>
-             <th width="20%">Dirección</th>
-             <th width="10%">Teléfono</th>
+             <th width="30%">Empresa</th>
+             <th width="30%">Cargo</th>
              <th width="10%">Tipo</th>
-             <th width="10%">Hab.</th>
+             <th width="10%">F.Vencimiento</th>             
              <th width="15%" className="text-center">
                Acciones
              </th>                
@@ -26,35 +25,18 @@ return(
              {data.map((item) => (
                <tr key={item.id}>
                  <td className="text-center">{item.id}</td>
-                 <td className="largo">{item.nombres}</td>
-                 <td>{item.direccion}</td>
-                 <td>{item.telefono}</td>
-                 <td>{item.coordenadas}</td>                     
-                 <td>
-                   {item.habilitado ? (
-                     <FontAwesomeIcon
-                       icon={faCheck}
-                       className="text-center text-success"
-                     />
-                   ) : (
-                     <FontAwesomeIcon
-                       icon={faTimes}
-                       className="text-danger text-danger"
-                     />
-                   )}
-                 </td>
+                 <td className="largo">{item.Cliente.nombres || ''}</td>
+                 <td>{item.cargo}</td>
+                 <td>{item.tipo}</td>
+                 <td>{item.fvencimiento}</td>                                     
                  <td className="text-center">
                    <ButtonGroup>                                                      
-                         <Link to={`/admin/cliente/${item.id}`}>
+                         <Link to={`/admin/reclutamiento/${item.id}`}>
                            <Button className={"btn-sm btn-info"}>
                              <FontAwesomeIcon icon={faEdit} />
                            </Button>
                          </Link>
-                         <Button
-                           className="btn-danger btn-sm"
-                           onClick={() => toggleViewf(item.id)}>
-                           <FontAwesomeIcon icon={faFilePdf} />
-                         </Button>                                                   
+                                                                 
                    </ButtonGroup>
                  </td>
                </tr>  

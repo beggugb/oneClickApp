@@ -154,12 +154,17 @@ function getItem(xredux, payload, id) {
   return (dispatch) => {
     crudService
       .getItem(payload, id)
-      .then((response) => {                      
-        dispatch(Item(xredux, response.cliente));
-        dispatch(Item('SUCURSAL_DATA', response.sucursales));                
-        dispatch(Item('HORARIO_DATA', response.horarios));        
-        dispatch(Item('CATEGORIA_ITEM', response.cliente.Categorium));
-        dispatch(Item('PAQUETE_ITEM', response.cliente.Paquete));             
+      .then((response) => {       
+        if(xredux === 'FAVORITO_ITEM'){
+          dispatch(Item(xredux, response.postulacion));
+        } else{
+          dispatch(Item(xredux, response.cliente));
+          dispatch(Item('SUCURSAL_DATA', response.sucursales));                
+          dispatch(Item('HORARIO_DATA', response.horarios));        
+          dispatch(Item('CATEGORIA_ITEM', response.cliente.Categorium));
+          dispatch(Item('PAQUETE_ITEM', response.cliente.Paquete));  
+        }              
+                   
       })
       .catch((err) => {
       
@@ -353,6 +358,8 @@ function getItemView(xredux, payload, id, state) {
           dispatch(ContratoView("CONTRATO_ITEM", response.contrato));
           dispatch(PlanView("PLAN_ITEM", response.plan));          
           
+        }else{
+          dispatch(ItemView(xredux, response.postulacion, state));
         }
       })
       .catch((err) => {

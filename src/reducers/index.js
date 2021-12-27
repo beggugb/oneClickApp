@@ -10,9 +10,11 @@ import { horario } from "./horario.reducers"
 import { contrato } from "./contrato.reducers"
 import { plan } from "./plan.reducers"
 import { notas } from "./notas.reducers"
+import { favoritos } from "./favoritos.reducers"
 
 const rootReducer = combineReducers({
   users,
+  favoritos,
   usus,
   clientes,
   categorias,
